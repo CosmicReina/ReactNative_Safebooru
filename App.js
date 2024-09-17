@@ -1,20 +1,39 @@
-import {StatusBar} from 'expo-status-bar';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from "react";
+import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+
+import s from './styles/MyStyles';
 
 export default function App() {
     return (
-        <View style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
-            <StatusBar style="auto"/>
-        </View>
+        <SafeAreaView style={s.wh100}>
+            <View style={[s.h10, s.w100, s.flexRow]}>
+                <View style={[s.w20, s.h100]}>
+
+                </View>
+                <View style={[s.w60, s.h100, s.justifyCenter_alignCenter]}>
+                    <Text style={{fontSize: 30}}>
+                        Safebooru
+                    </Text>
+                </View>
+                <View style={[s.w20, s.h100]}>
+                </View>
+            </View>
+            <View style={[s.h60, s.justifyCenter_alignCenter]}>
+                <Image
+                    source={require("./myassets/Template.png")}
+                    style={[s.wh90]}
+                    resizeMode={"contain"}
+                />
+            </View>
+            <View style={[s.h20, s.justifyCenter_alignCenter]}>
+                <TouchableOpacity style={[s.justifyCenter_alignCenter, {width: 150, height: 150}]}>
+                    <Image
+                        source={require("./assets/icon.png")}
+                        style={[s.wh90, { borderRadius: 750}]}
+                        resizeMode={"contain"}
+                    />
+                </TouchableOpacity>
+            </View>
+        </SafeAreaView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});

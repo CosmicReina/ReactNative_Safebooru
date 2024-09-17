@@ -45,6 +45,15 @@ const styles = StyleSheet.create({
     m30: {margin: 30},
 
     wh100: {width: '100%', height: '100%'},
+    wh90: {width: '90%', height: '90%'},
+    wh80: {width: '80%', height: '80%'},
+    wh70: {width: '70%', height: '70%'},
+    wh60: {width: '60%', height: '60%'},
+    wh50: {width: '50%', height: '50%'},
+    wh40: {width: '40%', height: '40%'},
+    wh30: {width: '30%', height: '30%'},
+    wh20: {width: '20%', height: '20%'},
+    wh10: {width: '10%', height: '10%'},
 
     h100: {height: '100%'},
     h90: {height: '90%'},
