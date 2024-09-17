@@ -1,6 +1,4 @@
 async function fetchSafebooru(tags) {
-
-
     tags = tags !== "" ? processTags(tags) : "all";
 
     let maxPID;
