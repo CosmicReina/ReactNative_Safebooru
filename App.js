@@ -29,7 +29,7 @@ export default function App() {
                 <TouchableOpacity style={[s.justifyCenter_alignCenter, {width: 150, height: 150}]}>
                     <Image
                         source={require("./assets/icon.png")}
-                        style={[s.wh90, { borderRadius: 750}]}
+                        style={[s.wh90, {borderRadius: 75}]}
                         resizeMode={"contain"}
                     />
                 </TouchableOpacity>
