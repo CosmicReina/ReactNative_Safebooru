@@ -15,6 +15,26 @@ async function fetchSafebooru(tags) {
     const pid = random * step;
 
     const path = await fetchRandomPost(tags, pid);
+
+    const url = "https://safebooru.org" + path;
+    return await fetchPost(url);
+}
+
+async function fetchPost(url) {
+    const {JSDOM} = require("jsdom");
+
+    const data = await fetch(url);
+    const html = await data.text();
+
+    const dom = new JSDOM(html);
+    const document = dom.window.document;
+
+    const linkList = document.querySelector(".link-list");
+
+    const liElements = linkList.querySelectorAll("li");
+    const liElement = Array.from(liElements).find(li => li.innerHTML.includes("Original image"));
+    const aElements = liElement.querySelector("a");
+    return aElements.href;
 }
 
 async function fetchRandomPost(tags, pid) {
@@ -35,6 +55,8 @@ async function fetchRandomPost(tags, pid) {
 
     const randomMax = aElements.length;
     const random = Math.floor(Math.random() * (randomMax + 1));
+    console.log(randomMax);
+    console.log(random);
 
     const randomElement = aElements[random];
     return randomElement.href;
@@ -63,7 +85,12 @@ function processTags(tags) {
     return tags.split(" ").join("+");
 }
 
-// fetchSafebooru("akiyama_mizuki").then(() => {});
+fetchSafebooru("akiyama_mizuki").then((image) => {
+    console.log(image)
+});
+
+// fetchPost("https://safebooru.org/index.php?page=post&s=view&id=4598960").then(() => {
+// });
 
 // fetchRandomPost("akiyama_mizuki+1girl", 100).then(() => {});
 
