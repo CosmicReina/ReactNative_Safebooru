@@ -54,7 +54,7 @@ async function fetchRandomPost(tags, pid) {
     const aElements = imageList.querySelectorAll("a");
 
     const randomMax = aElements.length;
-    const random = Math.floor(Math.random() * (randomMax + 1));
+    const random = Math.floor(Math.random() * (randomMax));
     console.log(randomMax);
     console.log(random);
 
@@ -84,14 +84,3 @@ async function fetchMaxPID(tags) {
 function processTags(tags) {
     return tags.split(" ").join("+");
 }
-
-fetchSafebooru("akiyama_mizuki").then((image) => {
-    console.log(image)
-});
-
-// fetchPost("https://safebooru.org/index.php?page=post&s=view&id=4598960").then(() => {
-// });
-
-// fetchRandomPost("akiyama_mizuki+1girl", 100).then(() => {});
-
-// console.log(processTags("akiyama_mizuki 1girl"));
