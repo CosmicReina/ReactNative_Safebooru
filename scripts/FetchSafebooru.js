@@ -63,7 +63,8 @@ async function fetchRandomPost(tags, pid) {
 }
 
 async function fetchMaxPID(tags) {
-    const {JSDOM} = require("jsdom");
+    // const {JSDOM} = require("jsdom");
+    const { DOMParser } = require("react-native-html-parser");
 
     const url = "https://safebooru.org/index.php?page=post&s=list"
         + "&tags=" + tags;
@@ -71,12 +72,12 @@ async function fetchMaxPID(tags) {
     const data = await fetch(url);
     const html = await data.text();
 
-    const dom = new JSDOM(html);
-    const document = dom.window.document;
-    const pagination = document.querySelector(".pagination");
+    // const dom = new JSDOM(html);
+    let doc = new DOMParser().parseFromString(html, "text/html");
+    const pagination = doc.querySelect(".pagination")[0];
 
-    const aElements = pagination.querySelectorAll("a");
-    const hrefLast = aElements[aElements.length - 1].href;
+    const aElements = pagination.querySelect("a");
+    const hrefLast = aElements[aElements.length - 1].getAttribute("href");
     const split = hrefLast.split("pid=");
     return split[split.length - 1];
 }
@@ -84,3 +85,13 @@ async function fetchMaxPID(tags) {
 function processTags(tags) {
     return tags.split(" ").join("+");
 }
+
+// fetchSafebooru("akiyama_mizuki 1girl").then((url) => {
+//     console.log(url);
+// });
+
+fetchMaxPID("akiyama_mizuki").then((maxPID) => {
+    console.log(maxPID);
+});
+
+// export default fetchSafebooru;
