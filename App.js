@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 
+import {fetchMaxPID} from './scripts/FetchSafebooru'
+
 import s from './styles/MyStyles';
 
 export default function App() {
